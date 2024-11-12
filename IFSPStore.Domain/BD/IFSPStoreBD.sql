@@ -14,13 +14,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema ifspStoreBD
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `ifspStoreBD` DEFAULT CHARACTER SET utf8 ;
-USE `ifspStoreBD` ;
+CREATE SCHEMA IF NOT EXISTS `IFSPStoreBD` DEFAULT CHARACTER SET utf8 ;
+USE `IFSPStoreBD` ;
 
 -- -----------------------------------------------------
 -- Table `ifspStoreBD`.`Usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ifspStoreBD`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `IFSPStoreBD`.`Usuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(100) NULL,
   `Senha` VARCHAR(45) NULL,
@@ -35,7 +35,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ifspStoreBD`.`Grupo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ifspStoreBD`.`Grupo` (
+CREATE TABLE IF NOT EXISTS `IFSPStoreBD`.`Grupo` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -45,7 +45,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ifspStoreBD`.`Produto`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ifspStoreBD`.`Produto` (
+CREATE TABLE IF NOT EXISTS `IFSPStoreBD`.`Produto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(100) NULL,
   `Preço` DECIMAL(10,2) NULL,
@@ -66,7 +66,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ifspStoreBD`.`Cidade`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ifspStoreBD`.`Cidade` (
+CREATE TABLE IF NOT EXISTS `IFSPStoreBD`.`Cidade` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(100) NULL,
   `Estado` VARCHAR(2) NULL,
@@ -77,7 +77,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ifspStoreBD`.`Cliente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ifspStoreBD`.`Cliente` (
+CREATE TABLE IF NOT EXISTS `IFSPStoreBD`.`Cliente` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(100) NULL,
   `Endereco` VARCHAR(100) NULL,
@@ -98,7 +98,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ifspStoreBD`.`Venda`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ifspStoreBD`.`Venda` (
+CREATE TABLE IF NOT EXISTS `IFSPStoreBD`.`Venda` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Data` TIMESTAMP NULL,
   `ValorTotal` DECIMAL(10,2) NULL,
@@ -123,7 +123,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ifspStoreBD`.`VendaItem`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ifspStoreBD`.`VendaItem` (
+CREATE TABLE IF NOT EXISTS `IFSPStoreBD`.`VendaItem` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Quantidade` INT NULL,
   `ValorUnitario` DECIMAL(10,2) NULL,

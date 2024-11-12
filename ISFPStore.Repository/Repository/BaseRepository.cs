@@ -1,5 +1,5 @@
 ﻿using IFSPStore.Domain.Base;
-using ISFPStore.Repository.Context;
+using IFSPStore.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace ISFPStore.Repository.Repository

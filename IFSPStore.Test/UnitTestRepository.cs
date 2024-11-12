@@ -36,10 +36,10 @@ namespace IFSPStore.Test
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
                 var server = "localhost";
-                var port = "3306";
-                var database = "IFSPStore";
+                var port = "3307";
+                var database = "IFSPStoreBD";
                 var username = "root";
-                var password = "K@gaya011526";
+                var password = "12345678";
                 var strCon = $"Server={server};Port={port};Database={database};" +
                     $"Uid={username};Pwd={password}";
 
@@ -80,11 +80,11 @@ namespace IFSPStore.Test
                 var cidade = context.Cidades.FirstOrDefault(context => context.Id == 1);
                 var cliente = new Cliente()
                 {
-                    Nome = "Kayky",
+                    Nome = "Davi",
                     Cidade = cidade,
-                    Endereco = "Rua Noroeste",
-                    Bairro = "Vila Roberto",
-                    Documento = "475.795.968-06"
+                    Endereco = "Rua Domingos Agostinho",
+                    Bairro = "Jandaia II",
+                    Documento = "448.282.908-00"
                 };
                 context.Clientes.Add(cliente);
                 context.SaveChanges();
@@ -118,10 +118,10 @@ namespace IFSPStore.Test
             {
                 var usuario = new Usuario()
                 {
-                    Nome = "Kayky",
-                    Senha = "K@gaya011526",
-                    Login = "Kagaya",
-                    Email = "kaykyogaya@gmail.com",
+                    Nome = "Davi",
+                    Senha = "Davi!229121997",
+                    Login = "davifes",
+                    Email = "davifes@gmail.com",
                     DataCadastro = data,
                     DataLogin = data,
                     Ativo = true

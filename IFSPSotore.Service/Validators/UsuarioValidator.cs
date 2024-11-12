@@ -23,7 +23,7 @@ namespace IFSPSotore.Service.Validators
 
             RuleFor(c => c.Senha)
                 .MinimumLength(8).WithMessage("Sua senha tem q ter no minimo 8 caracteres.")
-                .MaximumLength(8).WithMessage("Sua senha tem q ter no maximo 16 caracteres.")
+                //.MaximumLength(16).WithMessage("Sua senha tem q ter no maximo 16 caracteres.")
                 .Matches(@"[A-Z]+").WithMessage("Sua senha deve conter no minimo uma letra maiuscula.")
                 .Matches(@"[a-z]+").WithMessage("Sua senha deve conter no minimo uma letra minuscula.")
                 .Matches(@"[0-9]+").WithMessage("Sua senha deve conter no minimo um numeral.")

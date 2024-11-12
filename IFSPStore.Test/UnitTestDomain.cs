@@ -42,12 +42,12 @@ namespace IFSPStore.Test
         [TestMethod]
         public void TestUsuario()
         {
-            Usuario usuario = new Usuario(1, "Kayky", "12345678", "Kagaya", "kaykyogaya@gmail.com", data, data, true);
+            Usuario usuario = new Usuario(1, "Davi", "12345678", "davifes", "davifes@gmail.com", data, data, true);
             Debug.Write(JsonSerializer.Serialize(usuario));
-            Assert.AreEqual(usuario.Nome, "Kayky");
+            Assert.AreEqual(usuario.Nome, "Davi");
             Assert.AreEqual(usuario.Senha, "12345678");
-            Assert.AreEqual(usuario.Login, "Kagaya");
-            Assert.AreEqual(usuario.Email, "kaykyogaya@gmail.com");
+            Assert.AreEqual(usuario.Login, "davifes");
+            Assert.AreEqual(usuario.Email, "davifes@gmail.com");
             Assert.AreEqual(usuario.DataCadastro, data);
             Assert.AreEqual(usuario.DataLogin, data);
             Assert.AreEqual(usuario.Ativo, true);
@@ -57,12 +57,12 @@ namespace IFSPStore.Test
         public void TestCliente()
         {
             Cidade cidade = new Cidade(1, "Birigui", "SP");
-            Cliente cliente = new Cliente(1, "Kayky", "Rua Noroeste", "Vila Roberto", "475.795.968-06", cidade);
+            Cliente cliente = new Cliente(1, "Davi", "Rua Domingos Agostinho", "Jandaia II", "448.282.908-00", cidade);
             Debug.Write(JsonSerializer.Serialize(cliente));
-            Assert.AreEqual(cliente.Nome, "Kayky");
-            Assert.AreEqual(cliente.Endereco, "Rua Noroeste");
-            Assert.AreEqual(cliente.Bairro, "Vila Roberto");
-            Assert.AreEqual(cliente.Documento, "475.795.968-06");
+            Assert.AreEqual(cliente.Nome, "Davi");
+            Assert.AreEqual(cliente.Endereco, "Rua Domingos Agostinho");
+            Assert.AreEqual(cliente.Bairro, "Jandaia II");
+            Assert.AreEqual(cliente.Documento, "448.282.908-00");
             Assert.AreEqual(cliente.Cidade, cidade);
         }
 

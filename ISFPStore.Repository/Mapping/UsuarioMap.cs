@@ -1,48 +1,25 @@
-﻿using IFSPStore.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using IFSPStore.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 
-namespace ISFPStore.Repository.Mapping
+namespace IFSPStore.Repository.Mapping
 {
     public class UsuarioMap : IEntityTypeConfiguration<Usuario>
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
             builder.ToTable("Usuario");
-
-            builder.HasKey(prop => prop.Id);
-
-            builder.Property(prop => prop.Nome)
-                .HasConversion(prop => prop!.ToString(), prop => prop)
-                .IsRequired()
-                .HasColumnName("Nome")
-                .HasColumnType("varchar(100)");
-
-            builder.Property(prop => prop.Senha)
-                .IsRequired()
-                .HasColumnType("varchar(100)");
-
-            builder.Property(prop => prop.Login)
-                .IsRequired()
-                .HasColumnType("varchar(100)");
-
-            builder.Property(prop => prop.Email)
-                .IsRequired()
-                .HasColumnType("varchar(100)");
-
-            builder.Property(prop => prop.DataCadastro)
-                .HasDefaultValue(DateTime.Now);
-
-            builder.Property(prop => prop.DataLogin)
-                .IsRequired();
-
-            builder.Property(prop => prop.Ativo);
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Nome).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.Senha).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.Login).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.Email).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.DataCadastro).IsRequired();
+            builder.Property(x => x.DataLogin).IsRequired();
+            builder.Property(x => x.Ativo);
         }
+
 
     }
 }
