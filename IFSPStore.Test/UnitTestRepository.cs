@@ -19,13 +19,13 @@ namespace IFSPStore.Test
         public partial class MyDbContext : DbContext
         {
             
-            public DbSet<Usuario> Usuarios { get; set; }
-            public DbSet<Cidade> Cidades { get; set; }
-            public DbSet<Cliente> Clientes { get; set; }
-            public DbSet<Grupo> Grupos { get; set; }
-            public DbSet<Produto> Produtos { get; set; }
-            public DbSet<Venda> Vendas { get; set; }
-            public DbSet<VendaItem> VendaItens { get; set; }
+            public DbSet<Usuario> Usuario { get; set; }
+            public DbSet<Cidade> Cidade { get; set; }
+            public DbSet<Cliente> Cliente { get; set; }
+            public DbSet<Grupo> Grupo { get; set; }
+            public DbSet<Produto> Produto { get; set; }
+            public DbSet<Venda> Venda { get; set; }
+            public DbSet<VendaItem> VendaItem { get; set; }
 
             public MyDbContext()
             {
@@ -36,7 +36,7 @@ namespace IFSPStore.Test
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
                 var server = "localhost";
-                var port = "3307";
+                var port = "3306";
                 var database = "IFSPStoreBD";
                 var username = "root";
                 var password = "12345678";
@@ -60,14 +60,14 @@ namespace IFSPStore.Test
                     Nome = "Birigui",
                     Estado = "SP"
                 };
-                context.Cidades.Add(cidade);
+                context.Cidade.Add(cidade);
 
                 cidade = new Cidade()
                 {
                     Nome = "Araçatuba",
                     Estado = "SP"
                 };
-                context.Cidades.Add(cidade);
+                context.Cidade.Add(cidade);
                 context.SaveChanges();
             }
         }
@@ -77,7 +77,7 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                var cidade = context.Cidades.FirstOrDefault(context => context.Id == 1);
+                var cidade = context.Cidade.FirstOrDefault(context => context.Id == 1);
                 var cliente = new Cliente()
                 {
                     Nome = "Davi",
@@ -86,7 +86,7 @@ namespace IFSPStore.Test
                     Bairro = "Jandaia II",
                     Documento = "448.282.908-00"
                 };
-                context.Clientes.Add(cliente);
+                context.Cliente.Add(cliente);
                 context.SaveChanges();
             }
         }
@@ -100,13 +100,13 @@ namespace IFSPStore.Test
                 {
                     Nome = "Grupo 1"
                 };
-                context.Grupos.Add(grupo);
+                context.Grupo.Add(grupo);
 
                 grupo = new Grupo()
                 {
                     Nome = "Grupo 2"
                 };
-                context.Grupos.Add(grupo);
+                context.Grupo.Add(grupo);
                 context.SaveChanges();
             }
         }
@@ -126,7 +126,7 @@ namespace IFSPStore.Test
                     DataLogin = data,
                     Ativo = true
                 };
-                context.Usuarios.Add(usuario);
+                context.Usuario.Add(usuario);
 
                 usuario = new Usuario()
                 {
@@ -138,7 +138,7 @@ namespace IFSPStore.Test
                     DataLogin = data,
                     Ativo = true
                 };
-                context.Usuarios.Add(usuario);
+                context.Usuario.Add(usuario);
                 context.SaveChanges();
             }
         }
@@ -148,7 +148,7 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                var grupo = context.Grupos.FirstOrDefault(context => context.Id == 1);
+                var grupo = context.Grupo.FirstOrDefault(context => context.Id == 1);
                 var produto = new Produto()
                 {
                     Nome = "Caneta",
@@ -158,7 +158,7 @@ namespace IFSPStore.Test
                     UnidadeVenda = "Unidade",
                     Grupo = grupo
                 };
-                context.Produtos.Add(produto);
+                context.Produto.Add(produto);
 
                 produto = new Produto()
                 {
@@ -169,7 +169,7 @@ namespace IFSPStore.Test
                     UnidadeVenda = "Kg",
                     Grupo = grupo
                 };
-                context.Produtos.Add(produto);
+                context.Produto.Add(produto);
                 context.SaveChanges();
             }
         }
@@ -179,10 +179,10 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                var usuario = context.Usuarios.FirstOrDefault(context => context.Id == 1);
-                var cliente = context.Clientes.FirstOrDefault(context => context.Id == 1);
-                var produto1 = context.Produtos.FirstOrDefault(context => context.Id == 1);
-                var produto2 = context.Produtos.FirstOrDefault(context => context.Id == 2);
+                var usuario = context.Usuario.FirstOrDefault(context => context.Id == 1);
+                var cliente = context.Cliente.FirstOrDefault(context => context.Id == 1);
+                var produto1 = context.Produto.FirstOrDefault(context => context.Id == 1);
+                var produto2 = context.Produto.FirstOrDefault(context => context.Id == 2);
 
                 Venda venda = new Venda()
                 {
@@ -227,7 +227,7 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var cidade in context.Cidades)
+                foreach (var cidade in context.Cidade)
                 {
                     Console.WriteLine(JsonSerializer.Serialize(cidade));
                 }
@@ -239,7 +239,7 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var cliente in context.Clientes)
+                foreach (var cliente in context.Cliente)
                 {
                     Console.WriteLine(JsonSerializer.Serialize(cliente));
                 }
@@ -251,7 +251,7 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var grupo in context.Grupos)
+                foreach (var grupo in context.Grupo)
                 {
                     Console.WriteLine(JsonSerializer.Serialize(grupo));
                 }
@@ -263,7 +263,7 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var produto in context.Produtos)
+                foreach (var produto in context.Produto)
                 {
                     Console.WriteLine(JsonSerializer.Serialize(produto));
                 }
@@ -275,7 +275,7 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var usuario in context.Usuarios)
+                foreach (var usuario in context.Usuario)
                 {
                     Console.WriteLine(JsonSerializer.Serialize(usuario));
                 }
@@ -287,7 +287,7 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var vendaItem in context.VendaItens)
+                foreach (var vendaItem in context.VendaItem)
                 {
                     Console.WriteLine(JsonSerializer.Serialize(vendaItem));
                 }
@@ -299,7 +299,7 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var venda in context.Vendas)
+                foreach (var venda in context.Venda)
                 {
                     Console.WriteLine(JsonSerializer.Serialize(venda));
                 }
@@ -311,11 +311,11 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var cidade in context.Cidades)
+                foreach (var cidade in context.Cidade)
                 {
                     if (cidade.Id == 10)
                     {
-                        context.Cidades.Remove(cidade);
+                        context.Cidade.Remove(cidade);
                         break;
                     }
                 }
@@ -328,11 +328,11 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var cliente in context.Clientes)
+                foreach (var cliente in context.Cliente)
                 {
                     if (cliente.Id == 10)
                     {
-                        context.Clientes.Remove(cliente);
+                        context.Cliente.Remove(cliente);
                         break;
                     }
                 }
@@ -345,11 +345,11 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var grupo in context.Grupos)
+                foreach (var grupo in context.Grupo)
                 {
                     if (grupo.Id == 10)
                     {
-                        context.Grupos.Remove(grupo);
+                        context.Grupo.Remove(grupo);
                         break;
                     }
                 }
@@ -362,11 +362,11 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var produto in context.Produtos)
+                foreach (var produto in context.Produto)
                 {
                     if (produto.Id == 10)
                     {
-                        context.Produtos.Remove(produto);
+                        context.Produto.Remove(produto);
                         break;
                     }
                 }
@@ -379,11 +379,11 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var usuario in context.Usuarios)
+                foreach (var usuario in context.Usuario)
                 {
                     if (usuario.Id == 10)
                     {
-                        context.Usuarios.Remove(usuario);
+                        context.Usuario.Remove(usuario);
                         break;
                     }
                 }
@@ -396,11 +396,11 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var vendaItem in context.VendaItens)
+                foreach (var vendaItem in context.VendaItem)
                 {
                     if (vendaItem.Id == 10)
                     {
-                        context.VendaItens.Remove(vendaItem);
+                        context.VendaItem.Remove(vendaItem);
                         break;
                     }
                 }
@@ -413,11 +413,11 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var venda in context.Vendas)
+                foreach (var venda in context.Venda)
                 {
                     if (venda.Id == 10)
                     {
-                        context.Vendas.Remove(venda);
+                        context.Venda.Remove(venda);
                         break;
                     }
                 }
